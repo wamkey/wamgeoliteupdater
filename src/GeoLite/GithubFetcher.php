@@ -86,7 +86,11 @@ class GithubFetcher implements FetcherInterface
     public function isOutdated(GeoLite $geoLite): bool
     {
         $filePath = $geoLite->getDatabasePath();
-        $currentSha1 = sha1_file($filePath);
+
+        $filesize = filesize($filePath);
+        $prefix = 'blob ' . $filesize . "\0"; // Required to calculate SHA1, see: https://stackoverflow.com/a/5290484
+
+        $currentSha1 = sha1($prefix . file_get_contents($filePath));
         $newSha1 = $this->getMetadata()['sha'];
 
         return $currentSha1 !== $newSha1;

@@ -28,7 +28,7 @@
 
     <div class="card-body">
       <form action="{{ updateUrl }}" method="POST">
-        <button class="btn btn-primary" type="submit">
+        <button class="btn btn-primary" type="submit" {% if not updateAvailable %}disabled="disabled"{% endif %}>
           {{ 'Update'|trans({}, 'Modules.Wamgeoliteupdater.Admin') }}
         </button>
       </form>
@@ -36,6 +36,8 @@
         <strong>
           <i class="material-icons">info</i> {{ 'New updates are available.'|trans({}, 'Modules.Wamgeoliteupdater.Admin') }}
         </strong>
+      {% else %}
+        <i class="material-icons">check</i> {{ 'Database is up-to-date.'|trans({}, 'Modules.Wamgeoliteupdater.Admin') }}
       {% endif %}
     </div>
   </div>
