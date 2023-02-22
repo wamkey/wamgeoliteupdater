@@ -1,0 +1,19 @@
+{
+    "name": "wamkey/wamgeoliteupdater",
+    "description": "GeoLite2 database updater",
+    "type": "prestashop-module",
+    "license": "proprietary",
+    "autoload": {
+        "psr-4": {
+            "Wamkey\\GeoLiteUpdater\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Tech WAM",
+            "email": "dev@wamkey.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
