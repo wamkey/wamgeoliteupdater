@@ -2,6 +2,9 @@
 
 namespace Wamkey\GeoLiteUpdater\Component;
 
+/**
+ * Implementation of a view component based on Smarty.
+ */
 abstract class Component
 {
     /**

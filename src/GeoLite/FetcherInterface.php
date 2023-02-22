@@ -1,9 +1,11 @@
 <?php
 
-namespace Wamkey\GeoLiteUpdater\GeoLite\Contracts;
+namespace Wamkey\GeoLiteUpdater\GeoLite;
 
-use Wamkey\GeoLiteUpdater\GeoLite\GeoLite;
-
+/**
+ * The FetcherInterface abstracts the download process of a new update, allowing the use of multiple sources if
+ * required.
+ */
 interface FetcherInterface
 {
     /**

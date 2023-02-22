@@ -19,6 +19,10 @@ class ConfigurationManager extends Component
      */
     protected $link;
 
+    /**
+     * @param  GeoLite  $geoLite
+     * @param  \Link  $link
+     */
     public function __construct(GeoLite $geoLite, \Link $link)
     {
         parent::__construct();
@@ -28,7 +32,9 @@ class ConfigurationManager extends Component
     }
 
     /**
-     * @inheritDoc
+     * Renders the module's configuration page.
+     *
+     * @return string HTML output of the contents of the module's configuration page.
      */
     public function render(): string
     {

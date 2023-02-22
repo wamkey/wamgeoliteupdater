@@ -4,14 +4,31 @@ namespace Wamkey\GeoLiteUpdater\GeoLite;
 
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
-use Wamkey\GeoLiteUpdater\GeoLite\Contracts\FetcherInterface;
 
+/**
+ * This implementation of a database fetcher downloads updates from GitHub.
+ */
 class GithubFetcher implements FetcherInterface
 {
+    /**
+     * Repository name (e.g. vendor/repo).
+     *
+     * @var string
+     */
     protected $repositoryName;
 
+    /**
+     * Repository context (branch name e.g. 'master' or commit hash).
+     *
+     * @var string
+     */
     protected $repositoryContext;
 
+    /**
+     * Path to file in the current repository.
+     *
+     * @var string
+     */
     protected $repositoryPath;
 
     public function __construct()
@@ -21,6 +38,11 @@ class GithubFetcher implements FetcherInterface
         $this->repositoryPath = 'GeoLite2-City.mmdb';
     }
 
+    /**
+     * Fetch a new {@see HttpClientInterface} implementation.
+     *
+     * @return HttpClientInterface
+     */
     public function getHttpClient(): HttpClientInterface
     {
         static $_instance;
@@ -32,6 +54,9 @@ class GithubFetcher implements FetcherInterface
         return $_instance;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function getMetadata(): array
     {
         static $_cache;
@@ -55,6 +80,9 @@ class GithubFetcher implements FetcherInterface
         return $_cache;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function isOutdated(GeoLite $geoLite): bool
     {
         $filePath = $geoLite->getDatabasePath();
@@ -64,6 +92,9 @@ class GithubFetcher implements FetcherInterface
         return $currentSha1 !== $newSha1;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function download(): string
     {
         $downloadPath = _PS_ROOT_DIR_ . '/var/cache/tempgeolite.mmdb';
