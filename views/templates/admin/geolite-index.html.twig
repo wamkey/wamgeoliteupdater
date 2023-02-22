@@ -25,8 +25,19 @@
         <i class="material-icons">settings</i> {{ 'Manage GeoLite2 database'|trans({}, 'Modules.Wamgeoliteupdater.Admin') }}
       </h3>
     </div>
+
     <div class="card-body">
-      
+      <form action="{{ updateUrl }}" method="POST">
+        <button class="btn btn-primary" type="submit">
+          {{ 'Update'|trans({}, 'Modules.Wamgeoliteupdater.Admin') }}
+        </button>
+      </form>
+      {% if updateAvailable %}
+        <strong>
+          <i class="material-icons">info</i> {{ 'New updates are available.'|trans({}, 'Modules.Wamgeoliteupdater.Admin') }}
+        </strong>
+      {% endif %}
     </div>
   </div>
+
 {% endblock %}

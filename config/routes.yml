@@ -4,3 +4,10 @@ wamgeoliteupdater_geolite:
   defaults:
     _controller: 'Wamkey\GeoLiteUpdater\Controller\GeoLiteController::index'
     _legacy_controller: 'AdminWamGeoLite'
+
+wamgeoliteupdater_geolite_update:
+  path: wamgeoliteupdater/geolite/update
+  methods: [POST]
+  defaults:
+    _controller: 'Wamkey\GeoLiteUpdater\Controller\GeoLiteController::update'
+    _legacy_controller: 'AdminWamGeoLiteUpdate'
