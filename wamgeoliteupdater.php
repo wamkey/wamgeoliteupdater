@@ -1,5 +1,8 @@
 <?php
 
+use Wamkey\GeoLiteUpdater\GeoLite\GeoLite;
+use Wamkey\GeoLiteUpdater\Manager\ConfigurationManager;
+
 if (! defined('_PS_VERSION_')) {
     exit;
 }
@@ -13,15 +16,20 @@ class WamGeoLiteUpdater extends Module
      * 
      * @var bool
      */
-    protected $config_form = false;
+    protected $config_form = true;
 
     /**
-     * List of hooks that must be registered by the module.
-     * 
-     * @var string[]
+     * @inheritDoc
      */
-    protected static $moduleHooks = [
-        'displayFooter',
+    public $tabs = [
+        [
+            'route_name' => 'wamgeoliteupdater_geolite',
+            'class_name' => 'AdminWamGeoLite',
+            'visible' => false,
+            'parent_class_name' => 'DEFAULT',
+            'wording' => 'GeoLite configuration',
+            'wording_domain' => 'Modules.Wamgeoliteupdater.Admin',
+        ],
     ];
 
     public function __construct()
@@ -78,5 +86,28 @@ class WamGeoLiteUpdater extends Module
         }
 
         return parent::uninstall();
+    }
+
+    /**
+     * Returns the current context instance.
+     *
+     * @return \Context
+     */
+    public function getContext(): \Context
+    {
+        return $this->context;
+    }
+
+    /**
+     * Returns the HTML output of the module's configuration page.
+     *
+     * @return string
+     */
+    public function getContent(): string
+    {
+        return (new ConfigurationManager(
+            GeoLite::fromPath(_PS_GEOIP_DIR_ . _PS_GEOIP_CITY_FILE_),
+            $this->getContext()->link
+        ))->render();
     }
 }

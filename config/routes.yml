@@ -1,0 +1,6 @@
+wamgeoliteupdater_geolite:
+  path: wamgeoliteupdater/geolite
+  methods: [GET]
+  defaults:
+    _controller: 'Wamkey\GeoLiteUpdater\Controller\GeoLiteController::index'
+    _legacy_controller: 'AdminWamGeoLite'

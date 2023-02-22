@@ -1,0 +1,32 @@
+{% extends '@PrestaShop/Admin/layout.html.twig' %}
+
+{% block content %}
+
+  <div class="card">
+    <div class="card-header">
+      <h3>
+        <i class="material-icons">info</i> {{ 'Configuration details'|trans({}, 'Modules.Wamgeoliteupdater.Admin') }}
+      </h3>
+    </div>
+
+    <div class="card-body">
+      <strong>{{ 'GeoLite2 database metadata'|trans({}, 'Modules.Wamgeoliteupdater.Admin') }}</strong>
+      <ul>
+        <li>{{ 'Location:'|trans({}, 'Modules.Wamgeoliteupdater.Admin') }} {{ geoIpMeta.dbPath }}</li>
+        <li>{{ 'Build version:'|trans({}, 'Modules.Wamgeoliteupdater.Admin') }} {{ geoIpMeta.version }}</li>
+        <li>{{ 'Date:'|trans({}, 'Modules.Wamgeoliteupdater.Admin') }} {{ geoIpMeta.date }} (epoch: {{ geoIpMeta.epoch }})</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3>
+        <i class="material-icons">settings</i> {{ 'Manage GeoLite2 database'|trans({}, 'Modules.Wamgeoliteupdater.Admin') }}
+      </h3>
+    </div>
+    <div class="card-body">
+      
+    </div>
+  </div>
+{% endblock %}
