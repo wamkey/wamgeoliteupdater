@@ -25,8 +25,8 @@ class WamGeoLiteUpdater extends Module
         [
             'route_name' => 'wamgeoliteupdater_geolite',
             'class_name' => 'AdminWamGeoLite',
-            'visible' => false,
-            'parent_class_name' => 'DEFAULT',
+            'visible' => true,
+            'parent_class_name' => 'AdminParentLocalization',
             'wording' => 'GeoLite configuration',
             'wording_domain' => 'Modules.Wamgeoliteupdater.Admin',
         ],
