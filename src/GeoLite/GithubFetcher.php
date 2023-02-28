@@ -87,10 +87,7 @@ class GithubFetcher implements FetcherInterface
     {
         $filePath = $geoLite->getDatabasePath();
 
-        $filesize = filesize($filePath);
-        $prefix = 'blob ' . $filesize . "\0"; // Required to calculate SHA1, see: https://stackoverflow.com/a/5290484
-
-        $currentSha1 = sha1($prefix . file_get_contents($filePath));
+        $currentSha1 = self::generateGitSha1($filePath);
         $newSha1 = $this->getMetadata()['sha'];
 
         return $currentSha1 !== $newSha1;
@@ -101,24 +98,46 @@ class GithubFetcher implements FetcherInterface
      */
     public function download(): string
     {
-        $downloadPath = _PS_ROOT_DIR_ . '/var/cache/tempgeolite.mmdb';
+        $downloadPath = _PS_ROOT_DIR_ . '/var/cache/GithubFetcher-GeoLite-tmp.mmdb';
         $metadata = $this->getMetadata();
 
-        if(file_exists($downloadPath) && sha1_file($downloadPath) === $metadata['sha']) {
-            return $downloadPath;
+        if(file_exists($downloadPath)) {
+            // Check that the file currently stored in the temporary directory is already downloaded, by checking its
+            // hash with the one provided in the metadata. If that is the case, return the path immediately.
+            if(hash_equals(self::generateGitSha1($downloadPath), $metadata['sha'])) {
+                return $downloadPath;
+            }
+            // Delete temporary file if it is not valid before downloading it from the metadata's download URL.
+            else {
+                unlink($downloadPath);
+            }
         }
 
+        // Download database file.
         $response = $this->getHttpClient()->request('GET', $metadata['download_url']);
 
-        if(file_exists($downloadPath)) {
-            unlink($downloadPath);
-        }
-
+        // Write file.
         $fileHandler = fopen($downloadPath, 'w');
         foreach($this->getHttpClient()->stream($response) as $chunk) {
             fwrite($fileHandler, $chunk->getContent());
         }
 
         return $downloadPath;
+    }
+
+    /**
+     * Git-style SHA1 hash for a specific file with a blob type.
+     *
+     * See https://stackoverflow.com/a/5290484 for details of SHA-1 generation by a Git client.
+     *
+     * @param  string  $filePath  Path to the file that needs to be SHA-1'd.
+     * @return string SHA-1 hash of the file with the Git prefix.
+     */
+    public static function generateGitSha1(string $filePath): string
+    {
+        $filesize = filesize($filePath);
+        $prefix = 'blob ' . $filesize . "\0";
+
+        return sha1($prefix . file_get_contents($filePath));
     }
 }
