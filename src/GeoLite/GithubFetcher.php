@@ -31,6 +31,13 @@ class GithubFetcher implements FetcherInterface
      */
     protected $repositoryPath;
 
+    /**
+     * Metadata from the GitHub API. 'null' if the {@see self::getMetadata()} method has not yet been called.
+     *
+     * @var array|null
+     */
+    protected $metadata;
+
     public function __construct()
     {
         $this->repositoryName = 'P3TERX/GeoLite.mmdb';
@@ -59,9 +66,7 @@ class GithubFetcher implements FetcherInterface
      */
     public function getMetadata(): array
     {
-        static $_cache;
-
-        if($_cache === null) {
+        if(! is_array($this->metadata)) {
             $response = $this->getHttpClient()->request(
                 'GET',
                 'https://api.github.com/repos/' . $this->repositoryName
@@ -74,10 +79,10 @@ class GithubFetcher implements FetcherInterface
                     ]
                 ]
             );
-            $_cache = json_decode($response->getContent(), true);
+            $this->metadata = json_decode($response->getContent(), true);
         }
 
-        return $_cache;
+        return $this->metadata;
     }
 
     /**
