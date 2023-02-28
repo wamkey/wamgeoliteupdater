@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="admin771q8guqa" source-language="en-US" target-language="en-US" datatype="plaintext">
+    <body>
+      <trans-unit id="e307c421c9ce428a0fa211914c3830ec">
+        <source>GeoLite updater</source>
+        <target>GeoLite updater</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="1f14e91bb2c3d87e62a2ebcf84dc4ed4">
+        <source>GeoLite2 database updater</source>
+        <target>GeoLite2 database updater</target>
+        <note>Line: </note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

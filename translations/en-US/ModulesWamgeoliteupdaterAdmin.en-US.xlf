@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="admin771q8guqa" source-language="en-US" target-language="en-US" datatype="plaintext">
+    <body>
+      <trans-unit id="9e0667a5f6e4eea814af4360ade26e43">
+        <source>File downloaded successfully</source>
+        <target>File downloaded successfully</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="156ac10267fb3f97e6e931f2206ae0d9">
+        <source>Configuration details</source>
+        <target>Configuration details</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="09e1f10f091ee7eb383f0c93675bbf47">
+        <source>GeoLite2 database metadata</source>
+        <target>GeoLite2 database metadata</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="7c76223fb3769ebc919384e09ecf2e74">
+        <source>Location: </source>
+        <target>Location: </target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="03b75d2d4d7f0eb8a795d09271d8a961">
+        <source>Build version:</source>
+        <target>Build version:</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="0d8d58008ef5dd7afce337373ef73993">
+        <source>Date:</source>
+        <target>Date:</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="f4f70727dc34561dfde1a3c529b6205c">
+        <source>Settings</source>
+        <target>Settings</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="56a23ba6a29e2b13349984995c37a156">
+        <source>Access update options</source>
+        <target>Access update options</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="be9469719aa6efa2fc3bd5768bc406d7">
+        <source>Location:</source>
+        <target>Location:</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="159d4be7a7f0dea86b30626d06e3df56">
+        <source>Manage GeoLite2 database</source>
+        <target>Manage GeoLite2 database</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="06933067aafd48425d67bcb01bba5cb6">
+        <source>Update</source>
+        <target>Update</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="45d3b8bab10c6d02a11c4d180dd1147f">
+        <source>New updates are available.</source>
+        <target>New updates are available.</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="604763318087d920c422467962a9ee56">
+        <source>Database is up-to-date.</source>
+        <target>Database is up-to-date.</target>
+        <note>Line: </note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
