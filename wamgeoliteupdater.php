@@ -7,8 +7,6 @@ if (! defined('_PS_VERSION_')) {
     exit;
 }
 
-require_once(_PS_MODULE_DIR_ . 'wamgeoliteupdater/vendor/autoload.php');
-
 class WamGeoLiteUpdater extends Module
 {
     /**
@@ -44,17 +42,17 @@ class WamGeoLiteUpdater extends Module
     {
         $this->name = 'wamgeoliteupdater';
         $this->tab = 'administration';
-        $this->version = '1.0.0';
+        $this->version = '1.0.1';
         $this->author = 'Tech WAM';
         $this->need_instance = 0;
-
         $this->bootstrap = true;
+
+        $this->translateTabs();
 
         parent::__construct();
 
         $this->displayName = $this->trans('GeoLite updater', [], 'Modules.Wamgeoliteupdater.Main');
         $this->description = $this->trans('GeoLite2 database updater', [], 'Modules.Wamgeoliteupdater.Main');
-
         $this->ps_versions_compliancy = ['min' => '1.7.7', 'max' => _PS_VERSION_];
     }
 
@@ -64,6 +62,22 @@ class WamGeoLiteUpdater extends Module
     public function isUsingNewTranslationSystem(): bool
     {
         return true;
+    }
+
+    /**
+     * Populates the "names" array of each tab with the correct translations, when creating a new instance.
+     */
+    protected function translateTabs(): void
+    {
+        foreach($this->tabs as &$tab) {
+            $names = [];
+            foreach(Language::getLanguages() as $language) {
+                $names[$language['locale']] = $this->trans(
+                    $tab['wording'], [], $tab['wording_domain'], $language['locale']
+                );
+            }
+            $tab['name'] = $names;
+        }
     }
 
     /**
