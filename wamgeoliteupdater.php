@@ -19,12 +19,16 @@ class WamGeoLiteUpdater extends Module
     /**
      * @inheritDoc
      */
-    public $tabs = [
+    protected $tabs = [
         [
             'route_name' => 'wamgeoliteupdater_geolite',
             'class_name' => 'AdminWamGeoLite',
             'visible' => true,
             'parent_class_name' => 'AdminParentLocalization',
+            'name' => [
+                'en' => 'GeoLite configuration',
+                'fr' => 'Configuration GeoLite',
+            ],
             'wording' => 'GeoLite configuration',
             'wording_domain' => 'Modules.Wamgeoliteupdater.Admin',
         ],
@@ -33,6 +37,10 @@ class WamGeoLiteUpdater extends Module
             'class_name' => 'AdminWamGeoLiteUpdate',
             'visible' => false,
             'parent_class_name' => 'AdminWamGeoLite',
+            'name' => [
+                'en' => 'Update GeoLite database',
+                'fr' => 'Mettre à jour la base de données GeoLite',
+            ],
             'wording' => 'Update GeoLite database',
             'wording_domain' => 'Modules.Wamgeoliteupdater.Admin',
         ],
@@ -47,8 +55,6 @@ class WamGeoLiteUpdater extends Module
         $this->need_instance = 0;
         $this->bootstrap = true;
 
-        $this->translateTabs();
-
         parent::__construct();
 
         $this->displayName = $this->trans('GeoLite updater', [], 'Modules.Wamgeoliteupdater.Main');
@@ -62,22 +68,6 @@ class WamGeoLiteUpdater extends Module
     public function isUsingNewTranslationSystem(): bool
     {
         return true;
-    }
-
-    /**
-     * Populates the "names" array of each tab with the correct translations, when creating a new instance.
-     */
-    protected function translateTabs(): void
-    {
-        foreach($this->tabs as &$tab) {
-            $names = [];
-            foreach(Language::getLanguages() as $language) {
-                $names[$language['locale']] = $this->trans(
-                    $tab['wording'], [], $tab['wording_domain'], $language['locale']
-                );
-            }
-            $tab['name'] = $names;
-        }
     }
 
     /**
