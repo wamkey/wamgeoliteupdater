@@ -8,6 +8,9 @@
             "Wamkey\\GeoLiteUpdater\\": "src/"
         }
     },
+    "config": {
+        "prepend-autoloader": false
+    },
     "authors": [
         {
             "name": "Tech WAM",
