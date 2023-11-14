@@ -29,20 +29,16 @@ class WamGeoLiteUpdater extends Module
                 'en' => 'GeoLite configuration',
                 'fr' => 'Configuration GeoLite',
             ],
-            'wording' => 'GeoLite configuration',
-            'wording_domain' => 'Modules.Wamgeoliteupdater.Admin',
         ],
         [
             'route_name' => 'wamgeoliteupdater_geolite_update',
             'class_name' => 'AdminWamGeoLiteUpdate',
             'visible' => false,
-            'parent_class_name' => 'AdminWamGeoLite',
+            'parent_class_name' => 'AdminParentLocalization',
             'name' => [
                 'en' => 'Update GeoLite database',
                 'fr' => 'Mettre à jour la base de données GeoLite',
             ],
-            'wording' => 'Update GeoLite database',
-            'wording_domain' => 'Modules.Wamgeoliteupdater.Admin',
         ],
     ];
 
