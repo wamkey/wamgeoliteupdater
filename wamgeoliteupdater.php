@@ -3,7 +3,7 @@
 use Wamkey\GeoLiteUpdater\GeoLite\GeoLite;
 use Wamkey\GeoLiteUpdater\Manager\ConfigurationManager;
 
-if (! defined('_PS_VERSION_')) {
+if(! defined('_PS_VERSION_')) {
     exit;
 }
 
@@ -46,7 +46,7 @@ class WamGeoLiteUpdater extends Module
     {
         $this->name = 'wamgeoliteupdater';
         $this->tab = 'administration';
-        $this->version = '1.0.2';
+        $this->version = '1.0.3';
         $this->author = 'Tech WAM';
         $this->need_instance = 0;
         $this->bootstrap = true;
