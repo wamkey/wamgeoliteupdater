@@ -41,7 +41,7 @@ class WamGeoLiteUpdater extends Module
     {
         $this->name = 'wamgeoliteupdater';
         $this->tab = 'administration';
-        $this->version = '1.0.3';
+        $this->version = '1.0.4';
         $this->author = 'Tech WAM';
         $this->need_instance = 0;
         $this->bootstrap = true;
