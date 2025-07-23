@@ -42,7 +42,7 @@ class GithubFetcher implements FetcherInterface
 
     public function __construct()
     {
-        $this->repositoryName = 'P3TERX/GeoLite.mmdb';
+        $this->repositoryName = 'hRun/GeoLite.mmdb';
         $this->repositoryContext = 'download';
         $this->repositoryPath = 'GeoLite2-City.mmdb';
     }
