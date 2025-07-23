@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Wamkey\GeoLiteUpdater\GeoLite;
 
 use GeoIp2\Database\Reader;

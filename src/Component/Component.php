@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Wamkey\GeoLiteUpdater\Component;
 
 /**
@@ -26,5 +28,5 @@ abstract class Component
      *
      * @return string
      */
-    public abstract function render(): string;
+    abstract public function render(): string;
 }

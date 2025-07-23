@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Wamkey\GeoLiteUpdater\GeoLite\GeoLite;
 use Wamkey\GeoLiteUpdater\Manager\ConfigurationManager;
 
@@ -9,13 +11,6 @@ if(! defined('_PS_VERSION_')) {
 
 class WamGeoLiteUpdater extends Module
 {
-    /**
-     * Defines if the module has a configuration page (PrestaShop-specific property).
-     * 
-     * @var bool
-     */
-    protected $config_form = true;
-
     /**
      * @inheritDoc
      */
